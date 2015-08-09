@@ -18,4 +18,18 @@
 		</mobile>
 	</image>
 
+
+	<hotspot name="spot2" url="assets/img/ring.png" ath=" 74.6844" atv="  0.3681" scale="0.6" zoom="true"
+		     	alpha="0.3"
+		     	onover="tween(alpha,1);tween(scale,1);"
+		     	onout="tween(alpha,0.3);tween(scale,0.6);"
+		     	onclick="fl"
+		     	/> 
+
+ 	<action name="fl" type="Javascript">
+ 		<![CDATA[
+		    launchFeatherlight();
+		]]>
+	</action>
+
 </krpano>
