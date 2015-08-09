@@ -1,8 +1,8 @@
 # Dan & Erin Engagement
 
-I took her on a hike and stopped to take some panos. This hike was the fist one we went on togehter when we started dating. When I asked her to take a quick pano, I pulled out a ring and proposed as she took it. I captured her reaction.
+I took her on a hike and stopped to take some panos. This hike was the fist one we went on togehter when we started dating. When I asked her to take a quick pano, I pulled out a ring and proposed as she took it. I captured her reaction. View the pano on my <a href="http://dan-blair.ca/projects/engagement/">portfolio site</a>.
 
-<img src="preview.png" alt="engagement" />
+<a href="http://dan-blair.ca/projects/engagement/"><img src="preview.png" alt="engagement" /></a>
 
 # License
 
@@ -33,3 +33,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
+# Getting Marred
+
+Needless to say I am pretty happy.
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">I got engaged today, she said yes. <a href="https://twitter.com/hashtag/love?src=hash">#love</a> <a href="https://twitter.com/hashtag/engagement?src=hash">#engagement</a> <a href="https://twitter.com/hashtag/hiking?src=hash">#hiking</a> <a href="https://twitter.com/hashtag/manitoba?src=hash">#manitoba</a>. We were doing what we love, and surprised her <a href="http://t.co/vuWitigKIy">pic.twitter.com/vuWitigKIy</a></p>&mdash; Daniel Blair (@CMDannCA) <a href="https://twitter.com/CMDannCA/status/630122813316329476">August 8, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
