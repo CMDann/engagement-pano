@@ -1,0 +1,21 @@
+<krpano version="1.18">
+	
+	<!-- the skin -->
+	<include url="skin/defaultskin.xml" />
+	
+	<!-- view settings -->
+	<view hlookat="120" vlookat="0" maxpixelzoom="1.0" fovmax="150" limitview="auto" />
+	
+
+	<preview url="pano.tiles/preview.jpg" />
+
+	<image type="CUBE" multires="true" tilesize="512">
+		<level tiledimagewidth="652" tiledimageheight="652">
+			<cube url="pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg" />
+		</level>
+		<mobile>
+			<cube url="pano.tiles/mobile_%s.jpg" />
+		</mobile>
+	</image>
+
+</krpano>
