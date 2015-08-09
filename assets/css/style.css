@@ -1,0 +1,13 @@
+@-ms-viewport { width:device-width; }
+@media only screen and (min-device-width:800px) { html { overflow:hidden; } }
+html { height:100%; }
+body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
+#bsd_logo{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 990000;
+}
+.story {
+	color: #000;
+}
