@@ -19,15 +19,7 @@
   <style>
     html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #000; }
 
-    #bsd-logo {
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      z-index: 100;
-      height: 80px;
-      cursor: pointer;
-    }
-
+    /* HTML modal — flat-screen only; hidden in VR (WebXR only renders the canvas) */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -68,6 +60,7 @@
 <body>
 
   <a-scene vr-mode-ui="enabled: true"
+           webxr="optionalFeatures: local-floor, bounded-floor, hand-tracking"
            loading-screen="dotsColor: white; backgroundColor: black">
     <a-assets timeout="10000">
       <img id="pano-img" src="pano.jpg" crossorigin="anonymous">
@@ -80,9 +73,9 @@
     <!--
       Hotspot from pano.xml: ath=74.6844°, atv=0.3681°
       World position on R=99 sphere:
-        x =  99 * sin(74.6844°)            ≈  95.5
-        y = -99 * sin( 0.3681°)            ≈  -0.6
-        z = -99 * cos(74.6844°)            ≈ -26.1
+        x =  99 * sin(74.6844°)  ≈  95.5
+        y = -99 * sin( 0.3681°)  ≈  -0.6
+        z = -99 * cos(74.6844°)  ≈ -26.1
     -->
     <a-image id="ring-spot"
              src="#ring-img"
@@ -98,7 +91,8 @@
     </a-image>
 
     <!-- hlookat=120 from pano.xml → camera Y rotation = -120° -->
-    <a-camera rotation="0 -120 0"
+    <a-camera id="cam"
+              rotation="0 -120 0"
               wasd-controls="enabled: false"
               look-controls="magicWindowTrackingEnabled: true">
       <a-cursor raycaster="objects: .clickable"
@@ -108,34 +102,92 @@
                 geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016"
                 material="color: #fff; shader: flat">
       </a-cursor>
+
+      <!--
+        In-world info panel — child of camera so it always faces the viewer.
+        Used in VR mode (HTML overlays are invisible inside a WebXR session).
+        Also shown in flat-screen mode when a 2D modal isn't available.
+      -->
+      <a-entity id="vr-panel" visible="false" position="0 0 -1.8">
+        <a-plane color="#ffffffee" width="1.55" height="0.85" shader="flat"></a-plane>
+        <a-text value="She said yes!"
+                color="#111"
+                align="left"
+                anchor="left"
+                position="-0.7 0.3 0.01"
+                width="1.4"
+                wrap-count="28">
+        </a-text>
+        <a-text value="Dan took Erin on a hike — the first one they ever went on together. At the summit, he asked her to take a quick panorama, pulled out a ring, and proposed as she took it. She captured her own reaction.\n\nAugust 8, 2015."
+                color="#444"
+                align="left"
+                anchor="left"
+                position="-0.7 0.17 0.01"
+                width="1.4"
+                line-height="40"
+                wrap-count="32">
+        </a-text>
+        <!-- Close button -->
+        <a-entity id="vr-close"
+                  class="clickable"
+                  position="0.65 0.33 0.01"
+                  geometry="primitive: plane; width: 0.12; height: 0.12"
+                  material="color: #c0392b; shader: flat"
+                  text="value: X; align: center; color: #fff; width: 0.9; wrap-count: 2">
+        </a-entity>
+      </a-entity>
     </a-camera>
+
+    <!-- VR controller support (only activated when controllers are detected) -->
+    <a-entity laser-controls="hand: left"
+              raycaster="objects: .clickable; far: 200; showLine: true"
+              line="color: #fff; opacity: 0.6">
+    </a-entity>
+    <a-entity laser-controls="hand: right"
+              raycaster="objects: .clickable; far: 200; showLine: true"
+              line="color: #fff; opacity: 0.6">
+    </a-entity>
   </a-scene>
 
-  <img id="bsd-logo" src="assets/img/logo.png" alt="BSD XR"
-       onclick="window.open('http://bitspacedevelopment.com', '_blank')">
-
+  <!-- Flat-screen modal (not rendered in WebXR) -->
   <div class="modal-overlay" id="modal">
     <div class="modal-box">
       <button class="modal-close" id="modal-close">&times;</button>
       <h2>She said yes!</h2>
       <p>
-        This is a default featherlight lightbox.<br>
-        It&rsquo;s flexible in height and width.<br>
-        Everything that is used to display and style the box can be found in the
-        <a href="https://github.com/noelboss/featherlight/blob/master/src/featherlight.css">featherlight.css</a>
-        file which is pretty simple.
+        Dan took Erin on a hike — the first one they ever went on together when
+        they started dating. At the summit, he asked her to take a quick panorama,
+        pulled out a ring, and proposed as she took it. She captured her own reaction.
       </p>
+      <p><em>August 8, 2015.</em></p>
     </div>
   </div>
 
   <script>
-    const hotspot = document.querySelector('#ring-spot');
-    const modal   = document.querySelector('#modal');
-    const close   = document.querySelector('#modal-close');
+    const scene      = document.querySelector('a-scene');
+    const hotspot    = document.querySelector('#ring-spot');
+    const modal      = document.querySelector('#modal');
+    const modalClose = document.querySelector('#modal-close');
+    const vrPanel    = document.querySelector('#vr-panel');
+    const vrClose    = document.querySelector('#vr-close');
 
-    hotspot.addEventListener('click', () => modal.classList.add('active'));
-    close.addEventListener('click',   () => modal.classList.remove('active'));
-    modal.addEventListener('click',   e => { if (e.target === modal) modal.classList.remove('active'); });
+    function openInfo() {
+      if (scene.is('vr-mode')) {
+        vrPanel.setAttribute('visible', true);
+      } else {
+        modal.classList.add('active');
+      }
+    }
+
+    function closeInfo() {
+      vrPanel.setAttribute('visible', false);
+      modal.classList.remove('active');
+    }
+
+    hotspot.addEventListener('click', openInfo);
+    vrClose.addEventListener('click', closeInfo);
+    modalClose.addEventListener('click', closeInfo);
+    modal.addEventListener('click', e => { if (e.target === modal) closeInfo(); });
   </script>
 
 </body>

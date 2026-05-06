@@ -1,14 +1,35 @@
 # Dan & Erin Engagement
 
-I took her on a hike and stopped to take some panos. This hike was the fist one we went on togehter when we started dating. When I asked her to take a quick pano, I pulled out a ring and proposed as she took it. I captured her reaction. View the pano on my <a href="http://dan-blair.ca/projects/engagement/">portfolio site</a>.
+**[View Live →](https://cmdann.github.io/engagement-pano/)**
 
-<a href="http://dan-blair.ca/projects/engagement/"><img src="preview.png" alt="engagement" /></a>
+I took Erin on a hike — the first one we ever went on together when we started dating. When I asked her to take a quick panorama at the summit, I pulled out a ring and proposed as she took it. She captured her own reaction.
 
-# License
+[![Preview](preview.png)](https://cmdann.github.io/engagement-pano/)
 
-The krpano viewer is closed source, you will need your own license. You can find it at http://krpano.com.
+## About
 
-This pano and the images taken are registered under the MIT license.
+An interactive 360° panorama of the proposal moment. Navigate by clicking and dragging on desktop, touch-dragging on mobile, or put on a headset and enter VR mode. Find the ring hotspot to read the story.
+
+| | |
+|---|---|
+| **Panorama** | Equirectangular, 2048 × 1024 |
+| **Tech** | [A-Frame 1.6](https://aframe.io) — WebXR, no plugins required |
+| **VR** | Meta Quest, HTC Vive, Google Cardboard, any WebXR headset |
+| **Hosting** | GitHub Pages |
+
+## Getting Started
+
+Open `index.html` directly in a browser, or serve locally:
+
+```bash
+npx serve .
+```
+
+For VR: visit the live link on a WebXR-capable browser, then press the headset button in the bottom-right corner.
+
+## License
+
+This panorama and its images are licensed under the MIT License.
 
 ```
 The MIT License (MIT)
@@ -33,9 +54,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
-# Getting Married
 
-Needless to say I am pretty happy.
+---
 
-<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">I got engaged today, she said yes. <a href="https://twitter.com/hashtag/love?src=hash">#love</a> <a href="https://twitter.com/hashtag/engagement?src=hash">#engagement</a> <a href="https://twitter.com/hashtag/hiking?src=hash">#hiking</a> <a href="https://twitter.com/hashtag/manitoba?src=hash">#manitoba</a>. We were doing what we love, and surprised her <a href="http://t.co/vuWitigKIy">pic.twitter.com/vuWitigKIy</a></p>&mdash; Daniel Blair (@CMDannCA) <a href="https://twitter.com/CMDannCA/status/630122813316329476">August 8, 2015</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+> "I got engaged today, she said yes." — [@CMDannCA](https://twitter.com/CMDannCA/status/630122813316329476), August 8, 2015
